@@ -5,9 +5,8 @@ import Axios from 'axios';
 
 function App() {
 
-  //const api = "/campaigns"; // for cloud
-  const api = "http://54.209.149.101:8080/campaigns";
-
+  const api = "/campaigns";
+  
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
   const [newAmount, setNewAmount] = useState(0);
