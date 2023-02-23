@@ -106,6 +106,7 @@ button:hover {
 .Campaign {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   font-family: Helvetica;  
+  font-size: 15px;
   width: 700px;
   height: auto;
   border: 1px solid black;

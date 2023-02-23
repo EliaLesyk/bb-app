@@ -32,12 +32,12 @@ function App() {
     })
   };
 
-  const updateCampaignAmount = (id, newName) => {
-    Axios.put(api+"/update/"+id, { amount: newAmount, id: id, name: newName }).then(
+  const updateCampaignAmount = (id, name) => {
+    Axios.put(api+"/update/"+id, { amount: newAmount, id: id, name: name }).then(
       (response) => {
         setCampaignList(
           campaignList.map((val) => {
-            return val.id == id
+            return val.id == id, val.name == name
               ? {
                   id: val.id,
                   name: val.name,
