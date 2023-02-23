@@ -6,7 +6,7 @@ import Axios from 'axios';
 function App() {
 
   const api = "/campaigns";
-  
+
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
   const [newAmount, setNewAmount] = useState(0);
@@ -35,7 +35,6 @@ function App() {
   const updateCampaignAmount = (id, newName) => {
     Axios.put(api+"/update/"+id, { amount: newAmount, id: id, name: newName }).then(
       (response) => {
-        //console.log(amount, id);
         setCampaignList(
           campaignList.map((val) => {
             return val.id == id
@@ -45,7 +44,6 @@ function App() {
                   amount: newAmount,
                 }
               : val;
-            // console.log(val => val.id === id);
           })
         );
       }
