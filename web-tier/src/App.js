@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import "./App.css";
 import Axios from 'axios';
 
-//const url = 'http://internal-BB-int-LB-985798946.us-east-1.elb.amazonaws.com/campaigns';
-//const url = 'http://174.129.58.223:8080/campaigns/';
 
 function App() {
 
-  // const url = "/campaigns";
-  const url = "http://54.209.149.101:8080/campaigns";
+  //const api = "/campaigns"; // for cloud
+  const api = "http://54.209.149.101:8080/campaigns";
 
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
@@ -16,7 +14,7 @@ function App() {
   const [campaignList, setCampaignList] = useState([]);
 
   const addCampaign = () => {
-    Axios.post(url+"/create", {
+    Axios.post(api+"/create", {
       name: name,
       amount: amount,
     }).then(() => {
@@ -30,13 +28,13 @@ function App() {
   };
 
   const getCampaigns = () => {
-    Axios.get(url).then((response) => {
+    Axios.get(api).then((response) => {
       setCampaignList(response.data);
     })
   };
 
-  const updateCampaignAmount = (id) => {
-    Axios.put(url+"/update/"+id, { amount: newAmount, id: id }).then(
+  const updateCampaignAmount = (id, newName) => {
+    Axios.put(api+"/update/"+id, { amount: newAmount, id: id, name: newName }).then(
       (response) => {
         //console.log(amount, id);
         setCampaignList(
@@ -48,7 +46,7 @@ function App() {
                   amount: newAmount,
                 }
               : val;
-            console.log(val => val.id === id);
+            // console.log(val => val.id === id);
           })
         );
       }
@@ -56,7 +54,7 @@ function App() {
   };
 
   const deleteCampaign = (id) => {
-    Axios.delete(url+"/delete/"+id).then((response) => {
+    Axios.delete(api+"/delete/"+id).then((response) => {
       setCampaignList(
         campaignList.filter((val) => {
           return val.id != id;
@@ -77,37 +75,37 @@ function App() {
         <input type="number" onChange={(event) => {
           setAmount(event.target.value);
         }} />
-        <button onClick={addCampaign}>Add Campaign</button>
+        <button class="button-4" onClick={addCampaign}>Add Campaign</button>
       </div>
 
       <div className="Campaigns">
-        <button onClick={getCampaigns}>Show Campaigns</button>
+        <button class="button-4" onClick={getCampaigns}>Show Campaigns</button>
 
         {campaignList.map((val, key) => {
           return (
             <div className="Campaign">
-              <div>
+              <div className="CampaignTitle">
                 <h3>Name: {val.name}</h3>
                 <h3>Amount: {val.amount}</h3>
               </div>
               <div className="CampaignOpt">
-                <input
+                <input class="input-type"
                   type="text"
                   placeholder="Type new amount..."
                   onChange={(event) => {
                     setNewAmount(event.target.value);
                   }}
                 />
-                <button
+                <button class="button-4"
                   onClick={() => {
-                    updateCampaignAmount(val.id);
+                    updateCampaignAmount(val.id, val.name);
                   }}
                 >
                   {" "}
                   Update
                 </button>
 
-                <button
+                <button class="button-4"
                   onClick={() => {
                     deleteCampaign(val.id);
                   }}
