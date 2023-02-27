@@ -5,7 +5,7 @@ import Axios from 'axios';
 
 function App() {
 
-  const api = "/campaigns";
+  const api = "/campaigns";                   //const api = "http://54.209.149.101:8080/campaigns";
 
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src='https://bb-ha-site.s3.eu-central-1.amazonaws.com/GiveBack_logo.png' alt="3T Web App Architecture" style={{height:180,width:200}} />
+      <img src='https://din93im9p9vjw.cloudfront.net/GiveBack_logo.png' alt="3T Web App Architecture" style={{height:180,width:200}} />
       <div className="Information">
         <label>Campaign Name:</label>
         <input type="text" onChange={(event) => {
