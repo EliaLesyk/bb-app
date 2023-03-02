@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src='https://din93im9p9vjw.cloudfront.net/GiveBack_logo.png' alt="3T Web App Architecture" style={{height:180,width:200}} />
+      <img src='https://static.leselina.people.aws.dev/GiveBack_logo.png' alt="3T Web App Architecture" style={{height:180,width:200}} />
       <div className="Information">
         <label>Campaign Name:</label>
         <input type="text" onChange={(event) => {

@@ -20,13 +20,6 @@ const pool = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 })
 
-/**async function getCampaign(id) {
-  const [campaigns] = await pool.promise().query("SELECT * FROM campaigns WHERE id = ?", [
-    id,
-  ])
-  return campaigns[0]
-}*/
-
 // test Node.js web server on its port
 app.get("/test", (req, res) => {
   res.send("<h1>BB Charity website is working 🤗</h1>")
@@ -124,6 +117,13 @@ app.delete('/campaigns/delete/:id', (req, res) => {
     }
   });
 });
+
+/**async function getCampaign(id) {
+  const [campaigns] = await pool.promise().query("SELECT * FROM campaigns WHERE id = ?", [
+    id,
+  ])
+  return campaigns[0]
+}*/
 
 // Start the server on a specified port
 const port = process.env.PORT || 8080
